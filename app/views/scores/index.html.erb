@@ -1,0 +1,13 @@
+<div id="app">
+  <h3>New score: </h3>
+  <p>Home team: <input v-model="newHomeTeam"></input></p>
+  <p>Home team score: <input v-model="newHomeTeam"></input></p>
+  <p>Away team: <input v-model="newAwayTeam"></input></p>
+  <p>Away team score: <input v-model="newAwayTeamScore"></input></p>
+  <button v-on:click="addScore">Add Score</button>
+<hr>
+  <div v-for="score in scores">{{score.home_team}}: {{score.home_team_score}}
+  <p>{{score.away_team}}: {{score.away_team_score}}</p>
+  <hr>
+  </div>
+</div>
