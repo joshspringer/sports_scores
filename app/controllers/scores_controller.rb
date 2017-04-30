@@ -8,7 +8,7 @@ class ScoresController < ApplicationController
     if @score.save
       render 'show.json.jbuilder'
     else
-      render json: { errors: @score.errors.full }, status: 422
+      render json: { errors: @score.errors.full_messages }, status: 422
     end
   end
 end
