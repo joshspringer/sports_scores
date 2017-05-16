@@ -1,21 +1,29 @@
 <div id="app">
   <p v-for="error in errors"> {{error}} </p>
+
   <h3>New score: </h3>
-  <p>Home team: <input v-model="newHomeTeam" list="teams"></input></p>
   <datalist id="teams">
   <option v-for="score in scores">{{ score.home_team }}</option>
+  <option v-for="score in scores">{{ score.away_team }}</option>
   </datalist>
+
+  <p>Home team: <input v-model="newHomeTeam" list="teams"></input></p>
   <p>Home team score: <input v-model="newHomeTeamScore"></input></p>
   <p>Away team: <input v-model="newAwayTeam" list="teams"></input></p>
   <p>Away team score: <input v-model="newAwayTeamScore"></input></p>
   <button v-on:click="addScore">Add Score</button>
+
 <hr>
+
 <h4>Team Search: <input v-model="teamSearch"></h4>
 <button v-on:click="changeSortAttribute('home_team_score')">Sort by home team score</button>
 <button v-on:click="changeSortAttribute('away_team_score')">Sort by away team score</button>
-  <div v-for="score in modifiedScores" v-if="isTeam(score.home_team) || isTeam(score.away_team)">
-    <p>{{score.home_team}}: {{score.home_team_score}}</p>
-    <p>{{score.away_team}}: {{score.away_team_score}}</p>
-    <hr>
+  
+<transition-group name="slide-left">
+  <div v-for="score in modifiedScores" v-if="isTeam(score.home_team) || isTeam(score.away_team)" v-bind:key="score.id">
+      <p>{{score.home_team}}: {{score.home_team_score}}</p>
+      <p>{{score.away_team}}: {{score.away_team_score}}</p>
+      <hr>
   </div>
+</transition-group>
 </div>

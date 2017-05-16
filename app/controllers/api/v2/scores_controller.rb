@@ -1,5 +1,4 @@
-class Api::V2::ScoresController < Api::V2::ApplicationController
-  # adding Api::V2:: to ApplicationController looks for it in api/v2 folder. Can also leave it off and leave file in main folder and will look for it there (same file applies to all versions)
+class Api::V2::ScoresController < Api::V2::ApplicationController # adding Api::V2:: to ApplicationController looks for it in api/v2 folder. Can also leave it off and leave file in main folder and will look for it there (same file applies to all versions)
   def index
     @scores = Score.all
     render 'index.json.jbuilder'
